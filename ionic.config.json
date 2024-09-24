@@ -1,0 +1,7 @@
+{
+  "name": "wishlist-io",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
