@@ -31,32 +31,37 @@ import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/palettes/dark.system.css';
 
 /* Theme variables */
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import './theme/variables.css';
 
 setupIonicReact();
 
+const queryClient = new QueryClient()
+
 const App: React.FC = () => (
   <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Redirect exact path="/" to="/home" />
-          <Route path="/home" component={Home} exact />
-        </IonRouterOutlet>
+    <QueryClientProvider client={queryClient}>
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+            <Redirect exact path="/" to="/home" />
+            <Route path="/home" component={Home} exact />
+          </IonRouterOutlet>
 
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="home" href="/home">
-            <IonLabel>Inicio</IonLabel>
-          </IonTabButton>
+          <IonTabBar slot="bottom">
+            <IonTabButton tab="home" href="/home">
+              <IonLabel>Inicio</IonLabel>
+            </IonTabButton>
 
-          <IonTabButton tab="wishlist" href="/wishlist">
-            <IonLabel>
-              Lista de deseos
-            </IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
+            <IonTabButton tab="wishlist" href="/wishlist">
+              <IonLabel>
+                Lista de deseos
+              </IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </QueryClientProvider>
   </IonApp>
 );
 
